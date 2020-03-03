@@ -12,8 +12,9 @@
 namespace Assetic\Test\Cache;
 
 use Assetic\Cache\FilesystemCache;
+use Assetic\Test\TestCase;
 
-class FilesystemCacheTest extends \PHPUnit_Framework_TestCase
+class FilesystemCacheTest extends TestCase
 {
     public function testWithExistingDir()
     {

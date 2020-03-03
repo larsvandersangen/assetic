@@ -14,8 +14,9 @@ namespace Assetic\Test\Extension\Twig;
 use Assetic\Factory\AssetFactory;
 use Assetic\Extension\Twig\AsseticExtension;
 use Assetic\Extension\Twig\TwigFormulaLoader;
+use Assetic\Test\TestCase;
 
-class TwigFormulaLoaderTest extends \PHPUnit_Framework_TestCase
+class TwigFormulaLoaderTest extends TestCase
 {
     private $am;
     private $fm;

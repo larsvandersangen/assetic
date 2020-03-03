@@ -11,9 +11,10 @@
 
 namespace Assetic\Test\Util;
 
+use Assetic\Test\TestCase;
 use Assetic\Util\LessUtils;
 
-class LessUtilsTest extends \PHPUnit_Framework_TestCase
+class LessUtilsTest extends TestCase
 {
     public function testFilterUrls()
     {

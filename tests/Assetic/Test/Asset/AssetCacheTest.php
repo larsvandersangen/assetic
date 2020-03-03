@@ -12,8 +12,9 @@
 namespace Assetic\Test\Asset;
 
 use Assetic\Asset\AssetCache;
+use Assetic\Test\TestCase;
 
-class AssetCacheTest extends \PHPUnit_Framework_TestCase
+class AssetCacheTest extends TestCase
 {
     private $inner;
     private $cache;

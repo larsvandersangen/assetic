@@ -15,11 +15,12 @@ use Assetic\Asset\FileAsset;
 use Assetic\Asset\StringAsset;
 use Assetic\Factory\AssetFactory;
 use Assetic\Filter\ScssphpFilter;
+use Assetic\Test\TestCase;
 
 /**
  * @group integration
  */
-class ScssphpFilterTest extends \PHPUnit_Framework_TestCase
+class ScssphpFilterTest extends TestCase
 {
     protected function setUp()
     {
@@ -90,9 +91,8 @@ EOF;
 
     public function testCompassExtensionCanBeDisabled()
     {
-        $this->setExpectedExceptionRegExp(
-            'Exception',
-            '/^Undefined mixin box-shadow:.*line:* 4$/'
+        $this->expectExceptionMessageRegExp(
+            '/^Undefined mixin box-shadow:.*line:* 4, column: 5$/'
         );
 
         $asset = new FileAsset(__DIR__.'/fixtures/sass/main_compass.scss');

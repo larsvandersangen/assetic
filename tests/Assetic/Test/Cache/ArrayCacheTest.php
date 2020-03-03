@@ -12,11 +12,12 @@
 namespace Assetic\Test\Cache;
 
 use Assetic\Cache\ArrayCache;
+use Assetic\Test\TestCase;
 
 /**
  * @group integration
  */
-class ArrayCacheTest extends \PHPUnit_Framework_TestCase
+class ArrayCacheTest extends TestCase
 {
     public function testCache()
     {

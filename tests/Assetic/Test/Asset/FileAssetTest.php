@@ -12,8 +12,9 @@
 namespace Assetic\Test\Asset;
 
 use Assetic\Asset\FileAsset;
+use Assetic\Test\TestCase;
 
-class FileAssetTest extends \PHPUnit_Framework_TestCase
+class FileAssetTest extends TestCase
 {
     public function testInterface()
     {
@@ -40,7 +41,7 @@ class FileAssetTest extends \PHPUnit_Framework_TestCase
     {
         $asset = new FileAsset(__DIR__."/foo/bar/baz.css");
 
-        $this->setExpectedException("RuntimeException", "The source file");
+        $this->expectException("RuntimeException", "The source file");
         $asset->getLastModified();
     }
 
@@ -67,7 +68,7 @@ class FileAssetTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidBase()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
 
         $asset = new FileAsset(__FILE__, array(), __DIR__.'/foo');
     }

@@ -13,8 +13,9 @@ namespace Assetic\Test\Filter;
 
 use Assetic\Filter\BaseProcessFilter;
 use Assetic\Asset\AssetInterface;
+use Assetic\Test\TestCase;
 
-class BaseProcessFilterTest extends \PHPUnit_Framework_TestCase
+class BaseProcessFilterTest extends TestCase
 {
     public function testInterface()
     {

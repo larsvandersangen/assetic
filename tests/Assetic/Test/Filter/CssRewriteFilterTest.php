@@ -13,8 +13,9 @@ namespace Assetic\Test\Filter;
 
 use Assetic\Asset\StringAsset;
 use Assetic\Filter\CssRewriteFilter;
+use Assetic\Test\TestCase;
 
-class CssRewriteFilterTest extends \PHPUnit_Framework_TestCase
+class CssRewriteFilterTest extends TestCase
 {
     /**
      * @dataProvider provideUrls
@@ -58,9 +59,9 @@ class CssRewriteFilterTest extends \PHPUnit_Framework_TestCase
             array('body { background: url(%s); }', 'css/body.css', 'css/build/main.css', '//example.com/images/bg.gif', '//example.com/images/bg.gif'),
 
             // url diffs
-            array('body { background: url(%s); }', 'css/body.css', 'css/build/main.css', 'http://foo.com/bar.gif', 'http://foo.com/bar.gif'),
+            array('body { background: url(%s); }', 'css/body.css', 'css/build/main.css', 'https://foo.com/bar.gif', 'https://foo.com/bar.gif'),
             array('body { background: url(%s); }', 'css/body.css', 'css/build/main.css', '/images/foo.gif', '/images/foo.gif'),
-            array('body { background: url(%s); }', 'css/body.css', 'css/build/main.css', 'http://foo.com/images/foo.gif', 'http://foo.com/images/foo.gif'),
+            array('body { background: url(%s); }', 'css/body.css', 'css/build/main.css', 'https://foo.com/images/foo.gif', 'https://foo.com/images/foo.gif'),
 
             // IE AlphaImageLoader filter
             array('.fix { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'%s\'); }', 'css/ie.css', 'css/build/ie.css', '../images/fix.png', '../../images/fix.png'),
@@ -115,19 +116,19 @@ class CssRewriteFilterTest extends \PHPUnit_Framework_TestCase
 
     public function testExternalSource()
     {
-        $asset = new StringAsset('body { background: url(../images/bg.gif); }', array(), 'http://www.example.com', 'css/main.css');
+        $asset = new StringAsset('body { background: url(../images/bg.gif); }', array(), 'https://www.example.com', 'css/main.css');
         $asset->setTargetPath('css/packed/main.css');
         $asset->load();
 
         $filter = new CssRewriteFilter();
         $filter->filterDump($asset);
 
-        $this->assertContains('http://www.example.com/images/bg.gif', $asset->getContent(), '->filterDump() rewrites references in external stylesheets');
+        $this->assertContains('https://www.example.com/images/bg.gif', $asset->getContent(), '->filterDump() rewrites references in external stylesheets');
     }
 
     public function testEmptySrcAttributeSelector()
     {
-        $asset = new StringAsset('img[src=""] { border: red; }', array(), 'http://www.example.com', 'css/main.css');
+        $asset = new StringAsset('img[src=""] { border: red; }', array(), 'https://www.example.com', 'css/main.css');
         $asset->setTargetPath('css/packed/main.css');
         $asset->load();
 
@@ -139,7 +140,7 @@ class CssRewriteFilterTest extends \PHPUnit_Framework_TestCase
 
     public function testEmptyUrl()
     {
-        $asset = new StringAsset('body { background: url(); }', array(), 'http://www.example.com', 'css/main.css');
+        $asset = new StringAsset('body { background: url(); }', array(), 'https://www.example.com', 'css/main.css');
         $asset->setTargetPath('css/packed/main.css');
         $asset->load();
 

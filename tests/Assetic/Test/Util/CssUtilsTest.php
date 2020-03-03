@@ -11,9 +11,10 @@
 
 namespace Assetic\Test\Util;
 
+use Assetic\Test\TestCase;
 use Assetic\Util\CssUtils;
 
-class CssUtilsTest extends \PHPUnit_Framework_TestCase
+class CssUtilsTest extends TestCase
 {
     public function testFilterUrls()
     {

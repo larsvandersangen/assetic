@@ -108,7 +108,7 @@ EOF;
         // @import "main" screen;
         $imports = <<<CSS
 @import "main.css";
-@import "http://foo.com/bar";
+@import "https://foo.com/bar";
 CSS;
 
         $factory = new AssetFactory('/'); // the factory root isn't used

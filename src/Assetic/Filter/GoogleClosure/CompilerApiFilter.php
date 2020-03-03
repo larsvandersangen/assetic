@@ -89,7 +89,7 @@ class CompilerApiFilter extends BaseCompilerFilter
             }
             $context = stream_context_create($contextOptions);
 
-            $response = file_get_contents('http://closure-compiler.appspot.com/compile', false, $context);
+            $response = file_get_contents('https://closure-compiler.appspot.com/compile', false, $context);
             $data = json_decode($response);
         } elseif (defined('CURLOPT_POST') && !in_array('curl_init', explode(',', ini_get('disable_functions')))) {
             $ch = curl_init('http://closure-compiler.appspot.com/compile');

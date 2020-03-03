@@ -12,8 +12,9 @@
 namespace Assetic\Test\Factory\Worker;
 
 use Assetic\Factory\Worker\CacheBustingWorker;
+use Assetic\Test\TestCase;
 
-class CacheBustingWorkerTest extends \PHPUnit_Framework_TestCase
+class CacheBustingWorkerTest extends TestCase
 {
     private $worker;
 
